@@ -1,5 +1,5 @@
-SELECT named_coastal, named_inland, named_report, updated_at 
-	FROM dispatch_level
-	WHERE updated_at = (
-  	SELECT MAX(updated_at) 
-  	FROM dispatch_level)
+SELECT *
+	FROM obs
+	WHERE undefined = (
+  	SELECT MAX(undefined) 
+  	FROM obs)
