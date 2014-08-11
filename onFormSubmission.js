@@ -7,16 +7,19 @@ function onFormSubmission(e) {
    * Use Google services to get coordinates from a locality string
    */
   //Georeference the submission
-  var loc = geocode(e.namedValues.location);
+  var loc = geocode(e.namedValues.LT_Location);
   
   /**
    * Use our own function to post to our table
    */
-  postToCartoDB(
-    e.namedValues.location[0],
-    e.namedValues.coastal[0],
-    e.namedValues.inland[0],
-    e.namedValues.report[0],
+  LTpostToCartoDB(
+    e.namedValues.LT_Location[0],
+    e.namedValues.LT_Temperature[0],
+    e.namedValues.LT_Relative_Humidity[0],
+    e.namedValues.LT_Ignition_Component[0],
+    e.namedValues.LT_Spread_Component[0],
+    e.namedValues.LT_Burning_Index[0],
+    e.namedValues.LT_Dispatch_Level[0],
     loc.lat,
     loc.lng
   );
@@ -41,14 +44,14 @@ function geocode(address) {
 /**
  * Insert color into CartoDB
  */
-function postToCartoDB(location,coastal,inland,report,latitude,longitude) {
+function LTpostToCartoDB(LT_Location,LT_Temperature,LT_Relative_Humidity,LT_Ignition_Component,LT_Spread_Component,LT_Burning_Index,LT_Dispatch_Level,latitude,longitude) {
   Logger.log("posting to CartoDB");
   
   /**
    * Keep your key private!
    */
   var cartodb_host = "slu.cartodb.com";   //Your CartoDB domain
-  var cartodb_api_key = "#####";  //Your CartoDB API KEY
+  var cartodb_api_key = "62c8173a64100e8f9fa62c1936b19108544fed5c";  //Your CartoDB API KEY
   
   /**
    * Insert NULL as the_geom if no location is provided
@@ -63,14 +66,18 @@ function postToCartoDB(location,coastal,inland,report,latitude,longitude) {
   /**
    * Remove all single quotes
    */
-  location = location.replace("'","''");
-  coastal = coastal.replace("'","''");
-  inland = inland.replace("'","''");
-  report = report.replace("'","''");
+  LT_Location = LT_Location.replace("'","''");
+  LT_Temperature = LT_Temperature.replace("'","''");
+  LT_Relative_Humidity = LT_Relative_Humidity.replace("'","''");
+  LT_Ignition_Component = LT_Ignition_Component.replace("'","''");
+  LT_Spread_Component = LT_Spread_Component.replace("'","''");
+  LT_Burning_Index = LT_Location.replace("'","''");
+  LT_Dispatch_Level = LT_Dispatch_Level.replace("'","''");
+  
   /**
    * Here is the INSERT statement
    */
-  var query = "INSERT INTO dispatch_level(location,named_coastal,named_inland,named_report,the_geom) VALUES('"+location+"','"+coastal.replace(/'/g, "''")+"','"+inland.replace(/'/g, "''")+"','"+report.replace(/'/g, "''")+"',"+loc+")";
+  var query = "INSERT INTO LT_Observations(LT_Location,named_LT_Temperature,named_LT_Relative_Humidity,named_LT_Ignition_Component,named_LT_Spread_Component,named_LT_Burning_Index,named_LT_Dispatch_Level,the_geom) VALUES('"+LT_Location+"','"+LT_Temperature.replace(/'/g, "''")+"','"+LT_Relative_Humidity.replace(/'/g, "''")+"','"+LT_Ignition_Component.replace(/'/g, "''")+"','"+LT_Spread_Component.replace(/'/g, "''")+"','"+LT_Burning_Index.replace(/'/g, "''")+"','"+LT_Dispatch_Level.replace(/'/g, "''")+"',"+loc+")";
 
   Logger.log("SQL: "+query);  
 
