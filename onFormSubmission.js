@@ -48,7 +48,7 @@ function postToCartoDB(location,coastal,inland,report,latitude,longitude) {
    * Keep your key private!
    */
   var cartodb_host = "slu.cartodb.com";   //Your CartoDB domain
-  var cartodb_api_key = "62c8173a64100e8f9fa62c1936b19108544fed5c";  //Your CartoDB API KEY
+  var cartodb_api_key = "#####";  //Your CartoDB API KEY
   
   /**
    * Insert NULL as the_geom if no location is provided
