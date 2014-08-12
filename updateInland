@@ -1,0 +1,6 @@
+UPDATE inland
+SET lt_dispatch_level = current_obs.lt_dispatch_level,
+  timestamp = current_obs.timestamp
+FROM current_obs
+WHERE current_obs.{common column} = inland.{common column}
+AND inland.cartodb_id= 1
