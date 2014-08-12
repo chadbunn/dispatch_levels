@@ -7,14 +7,15 @@ function onFormSubmission(e) {
    * Use our own function to post to our table
    */
   postToCartoDB(
-    e.namedValues.color[0]
+    e.namedValues.color[0],
+    e.namedValues.test[0]
   );
 }
 
 /**
  * Insert color into CartoDB
  */
-function postToCartoDB(color) {
+function postToCartoDB(color, test) {
   Logger.log("posting to CartoDB");
   
   /**
@@ -26,11 +27,11 @@ function postToCartoDB(color) {
    * Remove all single quotes
    */
   color = color.replace("'","''");
-  
+  test = test.replace("'","''");
   /**
    * Here is the INSERT statement
    */
-  var query = "INSERT INTO color_world(named_color, the_geom) VALUES('"+color.replace(/'/g, "''")+"',"+null+")";
+  var query = "INSERT INTO color_world(named_color, the_geom) VALUES('"+color.replace(/'/g, "''")+"','"+test.replace(/'/g, "''")+"',"+null+")";
 
   Logger.log("SQL: "+query);  
 
