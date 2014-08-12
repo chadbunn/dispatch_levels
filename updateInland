@@ -1,6 +1,5 @@
 UPDATE inland
-SET lt_dispatch_level = current_obs.lt_dispatch_level,
-  timestamp = current_obs.timestamp
-FROM current_obs
-WHERE current_obs.{common column} = inland.{common column}
+SET lt_dispatch_level = obs.named_lt_dispatch_level
+FROM obs
+WHERE obs.named_lt_location = inland.named_lt_location
 AND inland.cartodb_id= 1
