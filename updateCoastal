@@ -1,4 +1,4 @@
-UPDATE coastal SET lt_dispatch_level = obs.named_ag_dispatch_level 
+UPDATE coastal SET ag_dispatch_level = obs.named_ag_dispatch_level 
 FROM obs 
 WHERE obs.created_at = (SELECT MAX(created_at) FROM obs) 
 AND coastal.cartodb_id = 1
