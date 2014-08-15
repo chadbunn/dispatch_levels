@@ -42,7 +42,7 @@ function postToCartoDB(lt_temperature,lt_relative_humidity,lt_ignition_component
    * Keep your key private!
    */
   var cartodb_host = "slu.cartodb.com";   //Your CartoDB domain
-  var cartodb_api_key = "6e8538f81acbdc7aac8ffccbb2f4cff92a7bd05e";  //Your CartoDB API KEY
+  var cartodb_api_key = "#####";  //Your CartoDB API KEY
   
   /**
    * Remove all single quotes
