@@ -6,7 +6,7 @@ Whenever you make a change to the Observations form it will reset all the field 
 
 **mostRecentReport**
 
-This SQL query is used on the 'obs' table in CartoDB to return only the most recently submitted row from the Observations form.  Do not create a new table from this view. This query is not being used anymore becasue the update SQL queries factor in the newest record value for either lt_dispatch_level or ag_dispatch_level.
+This SQL query is used on the 'obs' table in CartoDB to return only the most recently submitted row from the Observations form.  Do not create a new table from this view. This query is not being used anymore becasue the update SQL queries factor in the newest record value for either lt_dispatch_level or ag_dispatch_level.  However it is useful to see how to call the most recent form submitted.
 
 **updateInland**
 
