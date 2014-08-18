@@ -1,5 +1,5 @@
 SELECT *
 	FROM obs
-	WHERE created_at = (
-  	SELECT MAX(created_at) 
+	WHERE undefined = (
+  	SELECT MAX(undefined) 
   	FROM obs)
