@@ -8,24 +8,24 @@ Whenever you make a change to the Observations Google form it will reset all the
 
 ##SQL Queries
 
-###mostRecentReport
+####mostRecentReport
 
 This SQL query is used on the 'obs' table in CartoDB to return only the most recently submitted row from the Observations form.  Do not create a new table from this view. This query is not being used anymore becasue the update SQL queries factor in the newest record value for either lt_dispatch_level or ag_dispatch_level.  However it is useful to see how to call the most recent form submitted.
 
-###updateInland
+####updateInland
 
 This SQL query updates the lt_dispatch_level field with the most recently submitted Observations form submission value from named_lt_dispatch_level.
 
-###updateCoastal
+####updateCoastal
 
 This SQL query updates the ag_dispatch_level field with the most recently submitted Observations form submission value from named_ag_dispatch_level.
 
 ##SQL Triggers and Functions
 
-###update_inland_dispatch
+####update_inland_dispatch
 
 This is the SQL trigger that updates the *inland* table value for lt_dispatch_level.  It works by running the *indispatch* function every time a new Google form submission occurs.
 
-###update_coastal_dispatch
+####update_coastal_dispatch
 
 This is the SQL trigger that updates the *coastal* table value for ag_dispatch_level.  It works by running the *codispatch* function every time a new Google form submission occurs.
