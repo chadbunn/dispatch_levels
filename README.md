@@ -24,8 +24,18 @@ This SQL query updates the ag_dispatch_level field with the most recently submit
 
 ####update_inland_dispatch
 
-This is the SQL trigger that updates the *inland* table value for lt_dispatch_level.  It works by running the *indispatch* function every time a new Google form submission occurs.
+This is the SQL trigger that updates the *inland* table value for lt_dispatch_level.  It works by running the *indispatch* function every time a new Google form submission occurs.  The *indispatch* function is composed of the *UpdateInland* query.
 
 ####update_coastal_dispatch
 
-This is the SQL trigger that updates the *coastal* table value for ag_dispatch_level.  It works by running the *codispatch* function every time a new Google form submission occurs.
+This is the SQL trigger that updates the *coastal* table value for ag_dispatch_level.  It works by running the *codispatch* function every time a new Google form submission occurs.  The *codispatch* function is composed of the *UpdateCoastal* query.
+
+####Drop Function/Trigger
+To delete a function you need to apply this query in the CartoDB SQL console:  
+DROP *your_function*()  
+To delete a trigger you need to apply this query in the CartoDB SQL sonsole:  
+DROP *your_trigger* ON *obs*
+
+You might need to try dropping your triggers and functions if you want to change them to include more fields in the update functions.
+
+
