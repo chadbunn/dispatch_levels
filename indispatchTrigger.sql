@@ -3,7 +3,7 @@ RETURNS trigger AS $$
 
 BEGIN
 
-UPDATE inland SET lt_dispatch_level = obs.named_lt_dispatch_level
+UPDATE inland SET lt_dispatch_level = obs.named_lt_dispatch_level, timestamp = obs.named_timestamp
 FROM obs
 WHERE obs.created_at = (SELECT MAX(created_at) FROM obs)
 AND inland.cartodb_id = 1;
