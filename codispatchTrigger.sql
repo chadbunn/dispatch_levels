@@ -3,7 +3,7 @@ RETURNS trigger AS $$
 
 BEGIN
 
-UPDATE coastal SET ag_dispatch_level = obs.named_ag_dispatch_level
+UPDATE coastal SET ag_dispatch_level = obs.named_ag_dispatch_level, timestamp = obs.named_timestamp
 FROM obs
 WHERE obs.created_at = (SELECT MAX(created_at) FROM obs)
 AND coastal.cartodb_id = 1;
